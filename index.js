@@ -34,6 +34,40 @@ bot.on("ready", async () => {
     console.log(`${bot.user.username} is nu online en klaar voor gebruik.`);
 
     bot.user.setActivity(`!ticket`, { type: "WATCHING" });
+    	
+    bot.on("guildMemberAdd", member => {
+        var role = member.guild.roles.find("name", "Bezoeker"); 
+        if (!role) return;
+        member.addRole(role);
+ 
+        const channel = member.guild.channels.find("name", "👋welkom-leave👋");
+        if (!channel) console.log("Kan het kanaal niet vinden.");
+     
+        var joinEmbed = new discord.RichEmbed()
+            .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+            .setDescription(`Hoi ${member.user.username}, Welkom op **GoBots - BotMaker** Discord Server.`)
+            .setColor("#00FF00")
+            .setTimestamp()
+            .setFooter("Gebruiker gejoined.");
+     
+        channel.send(joinEmbed);
+ 
+
+      });   
+    });
+    bot.on("guildMemberRemove", member => {
+ 
+        const channel = member.guild.channels.find("name", "👋welkom-leave👋");
+        if (!channel) console.log("Kan het kanaal niet vinden.");
+     
+        var leaveEmbed = new discord.RichEmbed()
+            .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+            .setColor("#FF0000")
+            .setTimestamp()
+            .setFooter("Gebruiker Geleaved.");
+     
+        channel.send(leaveEmbed);
+     
 
 });
 
