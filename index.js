@@ -45,7 +45,7 @@ bot.on("ready", async () => {
      
         var joinEmbed = new discord.RichEmbed()
             .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
-            .setDescription(`Hoi ${member.user.username}, Welkom op **GoBots - BotMaker** Discord Server.`)
+            .setDescription(`Hoi ${member.user.username}, Welkom op **XiloCraft** Discord Server.`)
             .setColor("#00FF00")
             .setTimestamp()
             .setFooter("Gebruiker gejoined.");
